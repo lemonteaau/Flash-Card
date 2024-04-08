@@ -58,4 +58,4 @@ The course provided the foundation and guidance for building this app.
 
 ## License
 
-This project is open-source and available under the [[MIT License](https://opensource.org/licenses/MIT)](https://github.com/lemonteaau/Flash-Card/blob/main/LICENSE).
+This project is open-source and available under the [[MIT License](https://github.com/lemonteaau/Flash-Card/blob/main/LICENSE)].
