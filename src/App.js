@@ -1,9 +1,14 @@
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+
 import "./styles.css";
 
 export default function App() {
   return (
     <div className="App">
       <FlashCards />
+      <Footer />
     </div>
   );
 }
@@ -43,13 +48,59 @@ const questions = [
 ];
 
 function FlashCards() {
+  const [selectedID, setSelectedID] = useState(null);
+
+  function handleClick(id) {
+    setSelectedID(id !== selectedID ? id : null);
+  }
+
   return (
     <div className="flashcards">
       {questions.map((question) => (
-        <div key={question.id}>
-          <p>{question.question}</p>
+        <div
+          key={question.id}
+          onClick={() => handleClick(question.id)}
+          className={question.id === selectedID ? "selected" : ""}
+        >
+          <p>
+            {question.id === selectedID ? question.answer : question.question}
+          </p>
         </div>
       ))}
     </div>
+  );
+}
+function Footer() {
+  return (
+    <footer>
+      <h2 className="repo">
+        Made by{" "}
+        <a
+          href="https://github.com/lemonteaau/Flash-Card"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          lemonteaAU
+        </a>
+      </h2>
+      <div className="social-icons">
+        <a
+          href="https://www.linkedin.com/in/yangrui-cheng-789972274/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="LinkedIn"
+        >
+          <FontAwesomeIcon icon={faLinkedin} />
+        </a>
+        <a
+          href="https://github.com/lemonteaau"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="GitHub"
+        >
+          <FontAwesomeIcon icon={faGithub} />
+        </a>
+      </div>
+    </footer>
   );
 }
